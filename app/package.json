@@ -1,0 +1,65 @@
+{
+  "name": "pearbare",
+  "version": "0.3.0",
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "ios": "npm run bundle && expo run:ios",
+    "android": "npm run bundle && expo run:android",
+    "web": "expo start --web",
+    "bundle": "./script/bundle_worklet.sh",
+    "typecheck": "tsc --noEmit",
+    "test": "jest",
+    "barelog": "adb logcat '*:S bare:*'"
+  },
+  "dependencies": {
+    "@expo/metro-runtime": "~4.0.0",
+    "@reduxjs/toolkit": "^2.5.0",
+    "b4a": "1.6.7",
+    "bare-events": "^2.5.4",
+    "bare-rpc": "^0.1.4",
+    "events": "^3.3.0",
+    "expo": "~52.0.25",
+    "expo-build-properties": "^0.13.2",
+    "expo-clipboard": "~6.0.0",
+    "expo-status-bar": "~2.0.1",
+    "hypercore-crypto": "3.4.2",
+    "hyperswarm": "4.8.4",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-native": "0.76.6",
+    "react-native-bare-kit": "0.4.6",
+    "react-native-safe-area-context": "^5.7.0",
+    "react-native-web": "~0.19.13",
+    "react-redux": "^9.2.0",
+    "tiny-emitter": "2.1.0",
+    "typescript": "^5.3.3"
+  },
+  "jest": {
+    "preset": "jest-expo",
+    "testEnvironment": "node",
+    "testMatch": [
+      "**/__tests__/**/*.test.ts",
+      "**/__tests__/**/*.test.tsx",
+      "**/__tests__/**/*.test.js"
+    ],
+    "transform": {
+      "^.+\\.[jt]sx?$": "babel-jest"
+    },
+    "transformIgnorePatterns": [
+      "node_modules/(?!(b4a|tiny-emitter|immer|@reduxjs|react-native|@react-native|expo|@expo|react-redux))"
+    ],
+    "moduleNameMapper": {
+      "\\.bundle(\\.js)?$": "<rootDir>/__mocks__/workletApp.js",
+      "worklet/api": "<rootDir>/__mocks__/workletApi.js"
+    }
+  },
+  "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@types/jest": "^30.0.0",
+    "@types/react": "~18.3.12",
+    "@types/react-native": "^0.73.0",
+    "bare-pack": "1.5.1",
+    "jest-expo": "~52.0.0"
+  }
+}
